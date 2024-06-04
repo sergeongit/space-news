@@ -1,0 +1,26 @@
+<article class="flex-column">
+  <app-filter (filteredArticlesOutput)="filteredArticlesByKeyword($event)"></app-filter>
+
+  <h2 class="title">Results: {{filteredArticles?.length ?? defaultArticles.length}}</h2>
+  <mat-divider></mat-divider>
+  <section class="tiles-list">
+    @for (item of (filteredArticles ?? defaultArticles); track item.id) {
+      <mat-card class="tiles-list__item" (click)="navigateToArticle(item)">
+        <img mat-card-image src="{{item.image_url}}" alt="post-img">
+        <mat-card-header>
+          <mat-card-subtitle class="tiles-list__subtitle">{{item.published_at | date: 'MMM d, YYYY'}}</mat-card-subtitle>
+          <mat-card-title class="tiles-list__title">{{item.title}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="tiles-list__about">{{item.summary | slice: 0:100}}...</p>
+        </mat-card-content>
+        <mat-card-actions class="tiles-list__actions">
+          <span class="tiles-list__link flex">
+            Read more
+            <mat-icon class="icon" matPrefix aria-hidden="false" fontIcon="arrow_forward"></mat-icon>
+          </span>
+        </mat-card-actions>
+      </mat-card>
+    }
+  </section>
+</article>

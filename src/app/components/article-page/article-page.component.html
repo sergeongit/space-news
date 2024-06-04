@@ -1,0 +1,18 @@
+<section class="article flex-column">
+  <img class="article__bg" src="{{article.image_url}}" alt="post-img">
+
+  <mat-card class="article__card">
+    <mat-card-header>
+      <h2 class="article__title">{{article.title}}</h2>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="article__content">{{article.summary}}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <a class="article__link flex" [routerLink]="['/home']">
+    <mat-icon class="icon" matPrefix aria-hidden="false" fontIcon="arrow_back"></mat-icon>
+    Back to homepage
+  </a>
+</section>
+
